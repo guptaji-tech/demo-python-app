@@ -27,7 +27,7 @@ flaskapp/
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/your-username/flaskapp.git
+git clone https://github.com/guptaji-tech/demo-python-app.git
 cd flaskapp
 ```
 
