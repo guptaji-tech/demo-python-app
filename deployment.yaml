@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demo-python-app
+  namespace: demo-python-app
+  labels:
+    app: demo-python-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: demo-python-app
+  template:
+    metadata:
+      labels:
+        app: demo-python-app
+    spec:
+      containers:
+        - name: demo-python-app
+          image: guptajitech/demo-python-app:<latestImageTag>
+          env:
+            - name: POD_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+            - name: DEPLOYMENT_NAME
+              value: "demo-python-app"
+          ports:
+            - containerPort: 5000
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "50m"
+            limits:
+              memory: "256Mi"
+              cpu: "125m"
